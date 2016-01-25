@@ -1,0 +1,827 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs,multimedia} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{subfigure}
+\usepackage[mathcal]{euscript}
+\usepackage{tikz}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+\definecolor{titleblue}{HTML}{3333b3}
+\title[Kinematics of Human-Arm]{Modeling of Human-Arm Kinematics} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{
+Group 2
+\vspace{2mm}
+}
+
+\institute[ESSIM2013] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+\medskip
+}
+
+
+\logo{
+    \includegraphics[width=2cm,height=1.5cm,keepaspectratio]{logo}
+    \vspace{8.1cm}
+} % The left logo
+
+\date{\today} % Date, can be changed to a custom date
+\newcommand{\play}{\rotatebox[origin=c]{90}{$\blacktriangledown$}}
+
+\begin{document}
+
+\tikzstyle{titlebox} = [draw=titleblue, fill=titleblue, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=8pt]
+
+\begin{frame}
+\vspace{5mm}
+\begin{tikzpicture}[transform shape, rotate=0, baseline=0cm]
+  \node[titlebox](box) {%
+    \begin{minipage}[t!]{0.95\textwidth}
+      \color{white}\Large
+      \centering Modeling Kinematics of Human-Arm
+    \end{minipage}
+  };
+\end{tikzpicture}
+\hspace{5mm}
+%\titlepage % Print the title page as the first slide
+\begin{center}
+M. Barros Almeida,
+J. M. Candal Vilari\~{n}o,
+G. Doll\'{e},
+S. Emanuelsson,\\\vspace{1mm}
+M. Fraccaro,
+A. Gracheva,
+C. Ludwig
+\\\vspace{5mm}
+\textit{ Instructor:}
+Agnieszka Jurlewicz
+\\\vspace{5mm}
+\today
+\end{center}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+%\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+%\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+\section{Introduction}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Introduction}
+\begin{itemize}
+\item Modeling the kinematics of a human arm can be useful for specialists of human movements.
+\item It looks simple but it requires some advanced mathematical methods.
+\item This project is focused on modeling the sagittal-plane~(\textbf{S}) arm movement.
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.1]{figs/arm1a}
+  \hspace{10mm}
+  \includegraphics[scale=0.1]{figs/arm3aChange}
+\end{figure}
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\section{Motivation} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Motivation and Project Goals}
+%\begin{itemize}
+%\item Evaluation of medical rehabilitation methods requires introducing some new measurement parameters.
+%\item The aim of this project is to simulate the kinematics of the human-arm.
+%\item An extension find the optimal movement to improve the performance for sport athletes.
+%a recommendation to physiotherapists.
+%\end{itemize}
+%\end{frame}
+%%------------------------------------------------
+
+\section{Model}
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Model of the sagittal-plane arm movement}
+%\begin{wrapfigure}{l}{0.5\textwidth}
+%\end{wrapfigure}
+\parbox{6.5cm}{
+  \includegraphics[scale=0.7]{figs/scheme}
+}
+\hfill
+\parbox{4.5cm}{
+\begin{itemize}
+\item $(0,0)$ - Shoulder
+\item $(X_E,Y_E)$ - Elbow
+\item $(X_W,Y_W)$ - Wrist
+\item $(X_H,Y_H)$ - Fingertip
+\item $(\alpha,\beta,\gamma)$ - Restricted to certain ranges
+\end{itemize}
+}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Description of set $A$}
+
+Elbow coordinates:
+%
+\begin{align}\label{firstcoord}
+X_E = l_A\sin(\alpha) \\
+Y_E = -l_A\cos(\alpha)
+\end{align}
+%
+Wrist coordinates:
+%
+\begin{align}
+X_W = X_E + l_F\sin(\alpha+\beta) \\
+Y_W = Y_E - l_F\cos(\alpha+\beta)
+\end{align}
+%
+Fingertip coordinates:
+%
+\begin{align}
+X_H = X_W + l_H\sin(\alpha+\beta+\gamma) \\
+Y_H = Y_W - l_H\cos(\alpha+\beta+\gamma) \label{lastcoord}
+\end{align}
+
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Questions}
+Define the set $A$ of points reachable by the fingertip.
+\begin{block}{}
+\begin{itemize}
+\item What is the shape of set $A$?
+\item What is the area of set $A$?
+\end{itemize}
+\end{block}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+
+\frametitle{Shape of $A$ for healthy and handicapped people}
+\begin{figure}[!ht]
+  \centering
+  \label{fig:compari}
+  \subfigure[]{\includegraphics[scale=0.3]{figs/PointsOriginalPres}}
+  \subfigure[]{\includegraphics[scale=0.3]{figs/Points2overlap}}
+  \subfigure[]{\includegraphics[scale=0.3]{figs/Points3overlap}}
+\end{figure}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+  &  $\alpha$ & $\beta$ & $\gamma$ \\\hline
+ (a) typical & [-50,90] & [-10, 150] & [-70, 80] \\\hline
+ (b) handicapped & [-20, 90] & [-10, 100] & [-40, 70] \\\hline
+ (c) handicapped & [0,45] & [-10, 150] & [-70, 80] \\\hline
+\end{tabular}
+\end{center}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Shape building process}
+\centering
+\movie[externalviewer]{\play}{mov/movie2.avi}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.3\textwidth]{figs/200.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/400.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/600.pdf} \\
+  \includegraphics[width=0.3\textwidth]{figs/700.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/701.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/800.pdf}
+\label{fig:shapebuild}
+\end{figure}
+\end{frame}
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{How to calculate the area of $A$?}
+We propose two approaches:
+\begin{block}{}
+\begin{itemize}
+\item The method based on Green's theorem
+\item The Monte Carlo (MC) method
+\end{itemize}
+\end{block}
+Both methods require the edges and lead to similar results.
+\end{frame}
+%------------------------------------------------
+
+
+
+\section{Green's method}
+
+%------------------------------------------------
+%\begin{frame}
+%\huge{\centerline{Green's method}}
+%\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Method based on Green's theorem}
+
+\begin{block}{Green's Formula}
+\begin{equation}
+\int_\tau \frac{\partial p}{\partial \mathbf n} = \int_{A} \Delta p
+\end{equation}
+\end{block}
+%
+By the method based on Green's theorem the area of the set $A$ is given by
+%
+\begin{block}{}
+\begin{equation}
+A = \int_\tau x\,dy
+ \label{eq:green}
+\end{equation}
+\end{block}
+%%$\rightarrow$ the idea is to decompose
+
+%$$\Delta p = 1 \Rightarrow p=\frac{1}{2}x^2$$
+%$$\mathbf n = \begin{pmatrix} -\dot y \\ \dot x \end{pmatrix} $$
+%\int_{\partial\Omega} x(x(t))(\dot y(t)) dt = \int_{\Omega} x(t) dt
+%\begin{block}{Boundary decomposition}
+%\begin{equation}
+%\sum_{i} \int_{\tau_{H_i}} x dy = \int_{\Delta\Omega} x dy
+%\end{equation}
+%\end{block}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+%\begin{frame}
+%\frametitle{Green's Theorem}
+%\begin{block}
+%\begin{equation}
+%
+%\end{equation}
+%\end{block}
+%\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Boundary}
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[scale=0.55]{figs/BoundaryOriginalPres}
+\label{fig:boundary}
+\end{figure}
+
+\end{frame}
+%------------------------------------------------
+
+
+\section{Monte Carlo Integration}
+
+\begin{frame}
+\frametitle{Monte Carlo Integration}
+Not exact and much slower than the method based on Green's theorem, but it is
+\begin{itemize}
+\item useful to validate the previous approach
+\item easier to implement
+\item returns points uniformly distributed in the area of interest
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Algorithm}
+
+\begin{columns}
+\begin{column}{0.48\textwidth}
+\includegraphics[width=\textwidth]{figs/MCOriginal}
+\end{column}
+
+\begin{column}{0.52\textwidth}
+
+\begin{itemize}
+\item Pick $N$ points uniformly distributed in a rectangle $A_{rect}$ that includes the set $A$ we are interested in
+\item Count number $N_{h}$ of points that fall in $A$ (green crosses)
+\item The area $|A|$ is given by:
+$$
+|A|\approx|A_{rect}|\frac{N_h}{N}
+$$
+\end{itemize}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Rejection of points outside of $A$}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\textwidth]{figs/MCexplanation}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+\begin{itemize}
+\item Divide the domain such that only two points of the border have a given $x$ value
+\item Pick random point $(x_p,y_p)$
+\item Consider the set $S$ of points $(x,y)$ in the border that have $x_p-\epsilon<x<x_p+\epsilon$
+\item Reject the point if $y_p$ is not between the minimum and maximum $y$ in $S$.
+\end{itemize}
+
+\end{column}
+\end{columns}
+\end{frame}
+
+%------------------------------------------------
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Results}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/alpha_max}
+\end{column}
+\begin{column}{0.5\textwidth}
+  \includegraphics[width=\textwidth]{figs/beta_max}
+\end{column}
+\end{columns}
+\end{frame}
+%------------------------------------------------
+
+
+%%------------------------------------------------
+%\begin{frame}
+%\frametitle{Accuracy of the MC integration}
+%\centering
+%\includegraphics[width=0.6\textwidth]{figs/mc_green}
+%\end{frame}
+%%------------------------------------------------
+
+\section{Example of application}
+\begin{frame}
+\frametitle{Example of application}
+
+\begin{columns}
+\begin{column}{0.55\textwidth}
+Mobility of a patient after an accident:
+$$
+\alpha_0\in [-10^\circ, \; 10^\circ]
+$$
+$$ \beta_0\in [0^\circ, \; 40^\circ]
+$$
+$$
+ \gamma_0\in [-70^\circ, \; 80^\circ]
+$$
+
+\vspace*{0.5cm}
+Area evaluated with MC integration:
+$A_0=1059.97$ cm$^2$
+\end{column}
+
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{figs/ex_0a}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Treatment 1}
+
+\begin{columns}
+\begin{column}{0.55\textwidth}
+Focuses equally on the shoulder and the elbow ($\alpha$ and $\beta$)
+$$
+\alpha_1\in [-20^\circ, \; 40^\circ]
+$$
+$$
+ \beta_1\in [0^\circ, \; 80^\circ]
+ $$
+ $$
+  \gamma_1\in [-70^\circ, \; 80^\circ]
+$$
+
+\vspace*{0.5cm}
+$A_1=3007.06$ cm$^2$
+\end{column}
+
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{figs/ex_1a}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Treatment 2}
+
+\begin{columns}
+\begin{column}{0.55\textwidth}
+Focuses mostly on the elbow ($\beta$)
+$$
+\alpha_2\in [-10^\circ, \; 30^\circ]
+$$
+$$
+\beta_2\in [0^\circ, \; 100^\circ]
+$$
+$$
+ \gamma_2\in [-70^\circ, \; 80^\circ]
+$$
+
+\vspace*{0.5cm}
+$A_2=2693.64$ cm$^2$
+\end{column}
+
+\begin{column}{0.45\textwidth}
+\includegraphics[width=\textwidth]{figs/ex_2a}
+\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary of the results}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+\bf $\mathbf{A_0}$ & \bf $\mathbf{A_1}$ & \bf $\mathbf{A_2}$ \\  \hline
+
+1059.97 cm$^2$ & 3007.06 cm$^2$ &   2693.64 cm$^2$ \\\hline
+
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\textwidth]{figs/comparison}
+\end{column}
+
+\begin{column}{0.5\textwidth}
+
+
+\textit{Some points in space are more important than others} $\Rightarrow$ weight with a truncated 2d Gaussian distribution
+
+\end{column}
+\end{columns}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Extending the model with weights}
+
+\begin{columns}
+\begin{column}{0.45\textwidth}
+Given $\mathbf{p}=(x,y)$, we define the \textit{Importance}:
+$$
+I=\sum_{\mathbf{p}\in A} f(\mathbf{p})
+$$
+
+\end{column}
+\begin{column}{0.55\textwidth}
+\includegraphics[width=0.9\textwidth]{figs/mc_ex}
+
+\end{column}
+\end{columns}
+In this example the weights are:
+
+\begin{flushleft}
+$
+f(\mathbf{p})=
+\begin{cases}
+C e^{-\frac{1}{2}(\mathbf{p}-\text{\boldmath $\mu$})^T\mathbf{\sum}^{-1}(\mathbf{p}-\text{\boldmath $\mu$})} \quad & \text{if } x>20\text{ cm} \\
+0 & \text{otherwise}
+\end{cases}
+$
+\end{flushleft}
+
+%\frac{1}{\sqrt{(2\pi)^2\det(\mathbf{\Sigma})}}
+
+
+\end{frame}
+
+
+\section{Results}
+
+
+\begin{frame}
+\frametitle{Results}
+
+\begin{center}
+\includegraphics[width=0.5\textwidth]{figs/comparison}
+\end{center}
+
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & \bf Original mobility & \bf Treatment 1& \bf Treatment 2 \\  \hline
+ \bf Area &1059.97 cm$^2$ & 3007.06 cm$^2$ &   2693.64 cm$^2$ \\ \hline
+ \bf Importance & 0.081 &   0.1806 &   0.1968 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\end{frame}
+%------------------------------------------------
+
+
+\section{Conclusion}
+
+\begin{frame}
+\frametitle{Discussion and future work}
+\begin{block}{}
+\begin{itemize}
+\item Development of a simple model for the kinetimatics of the human arm
+\item Derivation of set $A$ and its boundaries
+\item Two approaches to compute the area of set $A$
+\end{itemize}
+\end{block}
+
+\begin{block}{Future work}
+\begin{itemize}
+\item Extend the model to the frontal and transversal planes
+\item Take into account each fingers for the model
+\item Include rotational movements
+\end{itemize}
+\end{block}
+\end{frame}
+
+
+%------------------------------------------------
+\begin{frame}
+\Large{\centerline{Thank you for your attention!}}
+\Large{\centerline{Merci de votre attention!}}
+\Large{\centerline{Grazas pola s\'{u}a atenci\'{o}n!}}
+\Large{\centerline{Gracias por vuestra atenci\'{o}n!}}
+\Large{\centerline{Danke f\"{u}r Ihre Aufmerksamkeit!}}
+%\Large{\centerline{спасибо за ваше внимание}}
+\Large{\centerline{Spasibo za vashe vnimanie!}}
+\Large{\centerline{Grazie per la Vostra attenzione!}}
+\Large{\centerline{Tack för er uppmärksamhet!}}
+\Large{\centerline{Obrigado pela vossa atenç\~{a}o!}}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{References}
+
+\footnotesize{
+\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+
+\bibitem[bober]{p1} T. Bober,J. Zawadzki
+\newblock The Biomechanics of the Human Movement System (Biomechanika uk\l{}adu ruchu cz\l{}owieka)
+\newblock \emph{Wydawnictwo BK}, 2001
+\end{thebibliography}
+}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+%                     END
+%------------------------------------------------
+
+%\begin{frame}
+%\frametitle{Bullet Points}
+%\begin{itemize}
+%\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
+%\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
+%\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
+%\end{itemize}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Blocks of Highlighted Text}
+%\begin{block}{Block 1}
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+%\end{block}
+%
+%\begin{block}{Block 2}
+%Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
+%\end{block}
+%
+%\begin{block}{Block 3}
+%Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
+%\end{block}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Multiple Columns}
+%\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+%
+%\column{.45\textwidth} % Left column and width
+%\textbf{Heading}
+%\begin{enumerate}
+%\item Statement
+%\item Explanation
+%\item Example
+%\end{enumerate}
+%
+%\column{.5\textwidth} % Right column and width
+%Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+%
+%\end{columns}
+%\end{frame}
+%
+%%------------------------------------------------
+%\section{Second Section}
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Table}
+%\begin{table}
+%\begin{tabular}{l l l}
+%\toprule
+%\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+%\midrule
+%Treatment 1 & 0.0003262 & 0.562 \\
+%Treatment 2 & 0.0015681 & 0.910 \\
+%Treatment 3 & 0.0009271 & 0.296 \\
+%\bottomrule
+%\end{tabular}
+%\caption{Table caption}
+%\end{table}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Theorem}
+%\begin{theorem}[Mass--energy equivalence]
+%$E = mc^2$
+%\end{theorem}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+%\frametitle{Verbatim}
+%\begin{example}[Theorem Slide Code]
+%\begin{verbatim}
+%\begin{frame}
+%\frametitle{Theorem}
+%\begin{theorem}[Mass--energy equivalence]
+%$E = mc^2$
+%\end{theorem}
+%\end{frame}\end{verbatim}
+%\end{example}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{Figure}
+%Uncomment the code on this slide to include your own image from the same directory as the template .TeX file.
+%%\begin{figure}
+%%\includegraphics[width=0.8\linewidth]{test}
+%%\end{figure}
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
+%\frametitle{Citation}
+%An example of the \verb|\cite| command to cite within the presentation:\\~
+%
+%This statement requires citation \cite{p1}.
+%\end{frame}
+%
+%%------------------------------------------------
+%
+%\begin{frame}
+%\frametitle{References}
+%\footnotesize{
+%\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
+%
+%\bibitem[Smith, 2012]{p1} John Smith (2012)
+%\newblock Title of the publication
+%\newblock \emph{Journal Name} 12(3), 45 -- 678.
+%
+%
+%\end{thebibliography}
+%}
+%\end{frame}
+%
+%------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

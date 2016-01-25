@@ -1,0 +1,120 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                            %%
+%%   Template LaTeX file for ECMI modelling week reports.     %%
+%%   Simplified version which does not use too many           %%
+%%   packages, thus not so nice as the full version,          %%
+%%   but should be able to run on most of systems             %%
+%%                                                            %%
+%%   This working version (16th ECMI modellling Week)
+%%                                                            %%
+%%                                                            %%
+%%   Example taken from template by Harald Hanche-Olsen       %%
+%%   (12th ECMI modelling week Trondheim 1999)                %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% instructions for single group reports:
+% this is the main file!!
+% make your files like
+% group0.tex
+
+\documentclass[a4paper,11pt,twoside]{report}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage[mathcal]{euscript}
+
+%% YOU CAN ADD HERE YOUR COMMANDS
+ % An example of commands you might need to add:
+\newcommand{\sech}{\operatorname{sech}}
+\newcommand{\ack}[1]{%
+   \thispagestyle{empty}
+   \vspace*{0.2\textheight}
+   \begin{center}
+   \textbf{Acknowledgements}
+   \end{center}
+   \par
+   #1
+   \vfill
+  \pagebreak
+}
+
+%% DO NOT MODIFY THE REMAINING PART
+
+\renewcommand{\chaptername}{Group}
+\newcommand{\modchapter}{\chapter}
+\newcommand{\shortname}{}
+
+%\markboth{DO NOT TAKE CARE OF LAYOUT}{YOUR REPORT WILL BE PAGINATED AGAIN}
+
+\title{24-th ECMI Modelling Week \\
+Final Report}
+
+\author{}
+
+\date{14.07.2013---28.07.2013\\
+Legan\'{e}s (Madrid), Spain}
+
+\begin{document}
+\pagestyle{myheadings}
+
+\setcounter{secnumdepth}{1}
+
+\modchapter{Modelling of Human-Arm Kinematics}
+% that's the name for the header which you want to
+% appear in the final report
+% (abbreviation of the project name)
+\renewcommand{\shortname}{Human-Arm Kinematics}
+
+% The title
+\begin{center}
+
+\textbf{Manuela Barros Almeida}\\
+\textit{University of Lisbon,\\
+Lisbon, Portugal}
+
+\textbf{Juan M. Candal Vilaria\~{n}o}\\
+\textit{Universidad de Santiago de Compostela,\\
+Santiago de Compostela, Spain}
+
+\textbf{Guillaume Doll\'{e}}\\
+\textit{University of Strasbourg,\\
+Strasbourg, France}
+
+\textbf{Sara Emanuelsson}\\
+\textit{Chalmers University of Technology,\\
+Gothenburg, Sweden}
+
+\textbf{Marco Fraccaro}\\
+\textit{Technical University of Denmark,\\
+Lyngby, Denmark}
+
+\textbf{Anna Gracheva}\\
+\textit{Lappeenranta University of Technology,\\
+ Lapeenranta, Finland}
+
+\textbf{Christoph Ludwig}\\
+\textit{Universidad Carlos III de Madrid,\\
+Legan\'{e}s, Spain}
+
+\vspace{10mm}
+
+\textbf{Instructor: Agnieszka Jurlewicz}\\
+\textit{Institute of Mathematics and Computer Science, \\
+Wroclaw University of Technology, Wroclaw, Poland}
+
+\end{center}
+
+\input{chapter1.tex}
+
+\nocite{*}
+\bibliography{bib_group01}
+\bibliographystyle{ecmi_bib}
+
+\end{document}
+
+
